@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customers</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f2f4f8; /* Light grayish-blue background */
+        color: #495057;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+      }
+
+      h1 {
+        color: #ffffff;
+        margin: 20px 0;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .customers-container {
+        flex: 1;
+        max-height: 500px; /* Set max height for the list; adjust as needed */
+        overflow-y: auto; /* Enable vertical scroll if content overflows */
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      li {
+        margin: 10px 0;
+        flex: 0 0 200px; /* Fixed width of 200px; adjust as needed */
+      }
+
+      a {
+        display: inline-block;
+        width: 100%;
+        padding: 10px 0;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      a:hover {
+        background-color: #0056b3;
+      }
+
+      .back-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #6c757d;
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .back-btn:hover {
+        background-color: #495057;
+      }
+.sub-heading{
+  color: #27201d;
+}
+      img {
+        max-width: 100%;
+        height: auto;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Banking App</h1>
+    </header>
+
+    <div class="container">
+      <div>
+        <div class="customers-container">
+          <h1 class="sub-heading">All Customers</h1>
+         <ul>
+  <% const seenNames = new Set(); %>
+  <% customers.forEach(customer => { %>
+    <% if (!seenNames.has(customer.name)) { %>
+      <li>
+        <a href="/customer/<%= customer.id %>"><%= customer.name %></a>
+      </li>
+      <% seenNames.add(customer.name); %>
+    <% } %>
+  <% }); %>
+</ul>
+
+        </div>
+        <button class="back-btn" onclick="location.href='/';">
+          Back to Home
+        </button>
+      </div>
+
+      <div class="image-container">
+        <img
+          src="https://img.freepik.com/free-photo/happy-businessman-talking-his-colleague-while-going-through-financial-reports-office_637285-1043.jpg?w=900&t=st=1704885119~exp=1704885719~hmac=e9d71172f22bf56b77f7c284d04a32e3304aa4dc4aa0fe78b944e46d57d190f9"
+          alt="Background Image"
+        />
+      </div>
+    </div>
+  </body>
+</html>
