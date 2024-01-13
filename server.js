@@ -7,11 +7,11 @@ const seedCustomers = require('./seed-database');
 require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const MONGODB_URI='mongodb+srv://bellaniramesh95:Ramesh1234@cluster0.acfampl.mongodb.net/yourDatabaseName'
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(MONGODB_URI, {
 
 }).then(async () => {
   console.log("MongoDB Connected!!");
