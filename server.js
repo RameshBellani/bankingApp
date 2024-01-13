@@ -9,13 +9,23 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI='mongodb+srv://bellaniramesh95:Ramesh1234@cluster0.acfampl.mongodb.net/yourDatabaseName'
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
 app.set('view engine', 'ejs');
 
 mongoose.connect(MONGODB_URI, {
-
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 }).then(async () => {
   console.log("MongoDB Connected!!");
 });
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send('Internal Server Error');
+});
+
 
 // Home Page
 app.get('/', (req, res) => {
